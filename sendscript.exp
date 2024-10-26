@@ -1,0 +1,69 @@
+#!/usr/bin/expect -f
+set device [lindex $argv 0]
+set file [lindex $argv 1]
+set timeout -1
+
+set f [open $file]
+set cmds [split [read $f] "\n"]
+close $f
+
+spawn picocom -g seriallog.txt -b 38400 $device
+
+proc waitcmdline { } {
+	expect {
+		"Unknown command" {
+			interact {
+				\003 { exit } # CTRL + C to stop
+				\004 { return } # CTRL + D to continue
+			}
+		}
+
+		"<RealTek>" {
+		}
+
+		"Jump to address=" {
+			interact {
+				\003 { exit } # CTRL + C to stop
+				\004 { return } # CTRL + D to continue
+			}
+		}
+		"(Y)es , (N)o ?" {
+			interact {
+				\003 { exit } # CTRL + C to stop
+				\004 { return } # CTRL + D to continue
+			}
+		}
+	}
+}
+
+expect {
+	"Terminal ready" {
+		send "\r"
+	}
+}
+
+expect {
+	"Switch core initialization success" {
+		#puts "Stopping autoboot..."
+		# interrupt boot loader
+		send \033A
+		expect {
+			"<RealTek>" {
+			}
+		}
+	}
+	"<RealTek>" {
+	}
+}
+
+send "\r"
+waitcmdline
+
+foreach cmd $cmds {
+	send $cmd
+	send "\r"
+	waitcmdline
+}
+
+interact
+close
