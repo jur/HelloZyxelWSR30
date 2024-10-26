@@ -14,14 +14,13 @@ Run the following command to build a hello world application:
 
 ## Serial Interface
 The serial interface of the device is defined as follows:
-Pin   Description
------ -----------
-Pin 1 3.3V
-Pin 2 UART TX
-Pin 3 UART RX
-Pin 4 0V ???
-Pin 5 GND
------------------
+|Pin  |Description|
+|-----|-----------|
+|Pin 1|3.3V       |
+|Pin 2|UART TX    |
+|Pin 3|UART RX    |
+|Pin 4|0V ???     |
+|Pin 5|GND        |
 Table: Jumper J18
 
 A serial to USB converter with 3.3V can be used.
