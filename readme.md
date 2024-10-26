@@ -13,7 +13,7 @@ Run the following command to build a hello world application:
 ```make```
 
 ## Serial Interface
-The serial interface of the device is defined as follows:
+The serial interface is available at jumper J18:
 
 Pin  |Description
 -----|-----------
@@ -22,7 +22,6 @@ Pin 2|UART TX
 Pin 3|UART RX
 Pin 4|0V ???
 Pin 5|GND
-Table: Jumper J18
 
 A serial to USB converter with 3.3V can be used.
 
