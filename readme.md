@@ -14,6 +14,7 @@ Run the following command to build a hello world application:
 
 ## Serial Interface
 The serial interface of the device is defined as follows:
+
 |Pin  |Description|
 |-----|-----------|
 |Pin 1|3.3V       |
