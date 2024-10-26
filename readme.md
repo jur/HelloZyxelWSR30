@@ -22,6 +22,7 @@ The serial interface of the device is defined as follows:
 |Pin 3|UART RX    |
 |Pin 4|0V ???     |
 |Pin 5|GND        |
+
 Table: Jumper J18
 
 A serial to USB converter with 3.3V can be used.
